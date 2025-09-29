@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class MaquinaVendaAutomatica {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Entrada do valor da compra
+        System.out.print("Valor da compra: R$ ");
+        int valorCompra = scanner.nextInt();
+
+        // Entrada do valor pago
+        System.out.print("Valor pago: R$ ");
+        int valorPago = scanner.nextInt();
+
+        // Verifica se o valor pago é suficiente
+        if (valorPago < valorCompra) {
+            System.out.println("Quantia insuficiente para realizar a compra.");
+        } else {
+            int troco = valorPago - valorCompra;
+            System.out.println("Troco: R$ " + troco);
+
+            // Notas disponíveis
+            int[] notas = {50, 20, 10, 5, 2, 1};
+
+            // Calcula a quantidade de cada nota
+            for (int nota : notas) {
+                int quantidade = troco / nota;
+                troco = troco % nota;
+                System.out.println("Notas de R$ " + nota + ": " + quantidade);
+            }
+        }
+
+        scanner.close();
+    }
+}
